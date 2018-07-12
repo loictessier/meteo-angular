@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DataApiHttpService} from '../../services/data-api-http.service';
-import {ActivatedRoute} from '../../../../node_modules/@angular/router';
+import {ActivatedRoute, Router} from '../../../../node_modules/@angular/router';
 import { Releve } from '../../models/releve';
 
 @Component({
@@ -15,7 +15,8 @@ export class ReleveFormComponent implements OnInit {
   newReleve = new Releve(null, 20, 10, 2, new Date(), this.idVille);
 
   constructor(private dataApiHttpService: DataApiHttpService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
 
@@ -31,7 +32,9 @@ export class ReleveFormComponent implements OnInit {
 
   createReleve() {
     this.newReleve.date = new Date();
-    this.dataApiHttpService.createReleve(this.newReleve).catch((message) => {
+    this.dataApiHttpService.createReleve(this.newReleve).then(() => {
+      this.router.navigateByUrl('/pageville;idVille=' + this.idVille + ';nomVille=' + this.nomVille);
+    }).catch((message) => {
       console.log(message);
     });
   }
