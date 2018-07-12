@@ -12,6 +12,7 @@ export class RelevesComponent implements OnInit {
 
   listeReleves: Releve[];
   nomVille: string;
+  idVille: string;
 
   constructor(private dataApiHttpService: DataApiHttpService,
               private activatedRoute: ActivatedRoute) { }
@@ -21,6 +22,7 @@ export class RelevesComponent implements OnInit {
       (params) => {
         if (params.idVille) {
           this.nomVille = params.nomVille;
+          this.idVille = params.idVille;
           this.dataApiHttpService.getListReleves(params.idVille).then((liste) => {
             this.listeReleves = liste;
           });
