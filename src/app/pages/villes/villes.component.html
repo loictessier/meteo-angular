@@ -9,7 +9,7 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let v of listeVilles" [routerLink]="['/pageville', {idVille:v.id}]">
+    <tr *ngFor="let v of listeVilles" [routerLink]="['/pageville', {idVille: v.id, nomVille: v.nom}]">
       <td>{{ v.nom }}</td>
       <td>{{ v.latitude }}</td>
       <td>{{ v.longitude }}</td>

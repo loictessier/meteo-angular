@@ -5,13 +5,20 @@ export class Releve {
     private _humidite: number;
     private _ensoleillement: number;
     private _date: Date;
+    private _idVille: string;
 
-    constructor(id: string, temperature: number, humidite: number, ensoleillement: number, date: Date) {
+    constructor(id: string,
+                temperature: number,
+                humidite: number,
+                ensoleillement: number,
+                date: Date,
+                idVille: string) {
         this.id = id;
         this.temperature = temperature;
         this.humidite = humidite;
         this.ensoleillement = ensoleillement;
         this.date = date;
+        this.idVille = idVille;
     }
 
 
@@ -50,5 +57,10 @@ export class Releve {
         this._date = v;
     }
 
-
+    public get idVille(): string {
+        return this._idVille;
+    }
+    public set idVille(v: string) {
+        this._idVille = v;
+    }
 }
