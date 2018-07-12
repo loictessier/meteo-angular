@@ -30,9 +30,10 @@ export class ReleveFormComponent implements OnInit {
   }
 
   createReleve() {
-    debugger;
     this.newReleve.date = new Date();
-    this.dataApiHttpService.createReleve(this.newReleve);
+    this.dataApiHttpService.createReleve(this.newReleve).catch((message) => {
+      console.log(message);
+    });
   }
 
 }
