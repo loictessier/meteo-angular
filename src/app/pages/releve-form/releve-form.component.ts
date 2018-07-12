@@ -12,9 +12,7 @@ export class ReleveFormComponent implements OnInit {
 
   idVille: string;
   nomVille: string;
-  temperature: number;
-  ensoleillement: number;
-  humidite: number;
+  newReleve = new Releve(null, 20, 10, 2, new Date(), this.idVille);
 
   constructor(private dataApiHttpService: DataApiHttpService,
               private activatedRoute: ActivatedRoute) { }
@@ -24,6 +22,7 @@ export class ReleveFormComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       if (params.idVille) {
         this.idVille = params.idVille;
+        this.newReleve.idVille = this.idVille;
         this.nomVille = params.nomVille;
       }
     });
@@ -31,17 +30,9 @@ export class ReleveFormComponent implements OnInit {
   }
 
   createReleve() {
-
-    let date = new Date();
-    let releve = new Releve(null,
-                            this.temperature,
-                            this.humidite,
-                            this.ensoleillement,
-                            date,
-                            this.idVille);
-
-    this.dataApiHttpService.createReleve(releve);
-
+    debugger;
+    this.newReleve.date = new Date();
+    this.dataApiHttpService.createReleve(this.newReleve);
   }
 
 }

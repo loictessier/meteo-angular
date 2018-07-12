@@ -7,13 +7,12 @@ export class Releve {
     private _date: Date;
     private _idVille: string;
 
-    constructor(id: string,
-                temperature: number,
-                humidite: number,
-                ensoleillement: number,
-                date: Date,
-                idVille: string) {
-        this.id = id;
+    constructor(id: string, temperature: number, humidite: number, ensoleillement: number, date: Date, idVille: string) {
+        if (id !== null) {
+            this.id = id;
+        } else {
+            this.id = this.guid();
+        }
         this.temperature = temperature;
         this.humidite = humidite;
         this.ensoleillement = ensoleillement;
@@ -62,5 +61,14 @@ export class Releve {
     }
     public set idVille(v: string) {
         this._idVille = v;
+    }
+
+    private guid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 }
