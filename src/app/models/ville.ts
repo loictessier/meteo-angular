@@ -2,10 +2,10 @@ export class Ville {
 
   private _id: string;
   private _nom: string;
-  private _longitude: string;
   private _latitude: string;
+  private _longitude: string;
 
-  constructor(id: string, nom: string, longitude: string, latitude: string) {
+  constructor(id: string, nom: string, latitude: string, longitude: string) {
 
       this.id = id;
       this.nom = nom;
