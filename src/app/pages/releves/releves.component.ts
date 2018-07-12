@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataApiHttpService } from '../../services/data-api-http.service';
+import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { Releve } from '../../models/releve';
 
 @Component({
   selector: 'app-releves',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RelevesComponent implements OnInit {
 
-  constructor() { }
+  listeReleves: Releve[];
+  nomVille: string;
+
+  constructor(private dataApiHttpService: DataApiHttpService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(
+      (params) => {
+        if (params.idVille) {
+          this.nomVille = params.nomVille;
+          this.dataApiHttpService.getListReleves(params.idVille).then((liste) => {
+            this.listeReleves = liste;
+          });
+        }
+      });
   }
 
 }
