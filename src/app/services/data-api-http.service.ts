@@ -11,13 +11,23 @@ export class DataApiHttpService {
   private urlVilles = 'http://pc-formateur/odata/villes';
   private urlReleves = 'http://pc-formateur/odata/releves';
 
-  constructor(private httpClient: HttpClient) { }
+  listeVilleCache: Promise<Ville[]>;
+
+  constructor(private httpClient: HttpClient) {
+      setTimeout(() => {
+        this.listeVilleCache  = null;
+      }, 300000);
+   }
+
 
   getListVilles(): Promise<Ville[]> {
-    return this.httpClient.get(this.urlVilles).toPromise().then(
-      (o: any) => o.value).then(
-        (t) => t.map(
-          (o) => new Ville(o.id, o.nom, o.latitude, o.longitude)));
+    if (!this.listeVilleCache) {
+      this.listeVilleCache = this.httpClient.get(this.urlVilles).toPromise().then(
+        (o: any) => o.value).then(
+          (t) => t.map(
+            (o) => new Ville(o.id, o.nom, o.latitude, o.longitude)));
+    }
+    return this.listeVilleCache;
   }
 
   getListReleves(idVille: string): Promise<Releve[]> {
@@ -31,7 +41,7 @@ export class DataApiHttpService {
   createReleve(releve: Releve) {
     let output: JSON;
     let obj: any = {
-      'date': releve.date,
+      'date': releve.date.toString(),
       'temperature': releve.temperature,
       'humidite': releve.humidite,
       'ensoleillement': releve.ensoleillement,
