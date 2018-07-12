@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Ville } from '../../models/ville';
+import { DataApiHttpService } from '../../services/data-api-http.service';
 
 @Component({
   selector: 'app-villes',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VillesComponent implements OnInit {
 
-  constructor() { }
+  listeVilles: Ville[];
+
+  constructor(public dataApiHttpService: DataApiHttpService) { }
 
   ngOnInit() {
+    this.dataApiHttpService.getListVilles().then((liste) => {
+      this.listeVilles = liste;
+    });
   }
 
 }
