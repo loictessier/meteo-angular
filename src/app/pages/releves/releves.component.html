@@ -1,22 +1,22 @@
-<h2>{{this.nomVille}}</h2>
+<h2>Relevés pour la ville de {{this.nomVille}}</h2>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Date</th>
-      <th>Temperature</th>
-      <th>Humidite</th>
-      <th>Ensoleillement</th>
+      <th scope="col">Date</th>
+      <th scope="col">Temperature</th>
+      <th scope="col">Humidite</th>
+      <th scope="col">Ensoleillement</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let r of listeReleves">
+    <tr *ngFor="let r of listeReleves"  scope="row">
       <td>{{ r.date }}</td>
       <td>{{ r.temperature }}</td>
       <td>{{ r.humidite }}</td>
       <td>{{ r.ensoleillement }}</td>
     </tr>
   </tbody>
-  <input type="button" [routerLink]="['/releveform', {idVille: idVille, nomVille: nomVille}]" value="Ajouter">
+  <input class="btn btn-primary" type="button" [routerLink]="['/releveform', {idVille: idVille, nomVille: nomVille}]" value="Ajouter">
 </table>
 

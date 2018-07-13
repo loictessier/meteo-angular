@@ -1,16 +1,17 @@
 <h3>Ajout d'un relevé pour la ville de {{ nomVille }}</h3>
 
-<form (submit)="createReleve()">
+<form  class="form-group" (submit)="createReleve()">
 
   <label>Température</label><br/>
-  <input [(ngModel)]="newReleve.temperature" type="text" name="temperature"><br/><br/>
+  <input  class="form-control" [(ngModel)]="newReleve.temperature" type="text" name="temperature"><br/><br/>
 
   <label>humidité</label><br/>
-  <input [(ngModel)]="newReleve.humidite" type="number" name="humidite"><br/><br/>
+  <input class="form-control" [(ngModel)]="newReleve.humidite" type="number" name="humidite"><br/><br/>
 
   <label>ensoleillement</label><br/>
-  <input [(ngModel)]="newReleve.ensoleillement" type="number" name="ensoleillement"><br/><br/>
+  <input class="form-control" [(ngModel)]="newReleve.ensoleillement" type="number" name="ensoleillement"><br/><br/>
 
-  <input type="submit" value="Sauvegarder">
+  <input class="btn btn-primary" type="submit" value="Sauvegarder">
+  <button class="btn btn-primary div-back">Retour</button>
 
 </form>
