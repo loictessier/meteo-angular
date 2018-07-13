@@ -39,4 +39,10 @@ export class ReleveFormComponent implements OnInit {
     });
   }
 
+  backPage() {
+
+    this.router.navigateByUrl('/');
+
+  }
+
 }

@@ -1,5 +1,16 @@
 .div-back{
-
   margin-left:15px;
+}
 
+.form-control{
+  height: 50px;
+  font-size: 20px;
+}
+
+h2{
+  margin-bottom: 30px;
+}
+
+strong{
+  color:blue;
 }

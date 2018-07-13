@@ -1,0 +1,24 @@
+h2{
+
+  margin-bottom: 30px;
+
+}
+
+table{
+
+  border:1px solid rgb(220,220,220);
+}
+
+.name-col{
+
+    color:rgb(0,98,230);
+    font-weight: bold;
+    font-size: 17px;
+
+}
+
+tbody:hover{
+
+  cursor: pointer;
+
+}
