@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Releve } from '../../models/releve';
+import { DataApiHttpService } from '../../services/data-api-http.service';
 
 @Component({
   selector: 'app-releve-all',
@@ -13,6 +14,9 @@ export class ReleveAllComponent implements OnInit {
   constructor(public dataApiHttpService: DataApiHttpService) { }
 
   ngOnInit() {
+    this.dataApiHttpService.getAllReleves().then((liste) => {
+      this.ListeReleve = liste;
+    });
   }
 
 }

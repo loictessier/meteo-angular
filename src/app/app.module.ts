@@ -8,10 +8,12 @@ import { VillesComponent } from './pages/villes/villes.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RelevesComponent } from './pages/releves/releves.component';
 import { ReleveFormComponent } from './pages/releve-form/releve-form.component';
+import { ReleveAllComponent } from './pages/releve-all/releve-all.component';
 
 const routes: Routes = [
   { path: '', component: VillesComponent },
   { path: 'pageville', component: RelevesComponent },
+  { path: 'releveall', component: ReleveAllComponent },
   { path: 'releveform', component: ReleveFormComponent }
 ];
 
@@ -20,7 +22,8 @@ const routes: Routes = [
     AppComponent,
     VillesComponent,
     RelevesComponent,
-    ReleveFormComponent
+    ReleveFormComponent,
+    ReleveAllComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,11 @@
 h2{
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+}
+
+tbody tr{
+  cursor: pointer;
+}
+
+tbody strong{
+  color: blue;
 }
