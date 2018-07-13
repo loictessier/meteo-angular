@@ -43,10 +43,16 @@ export class DataApiHttpService {
   }
 
   modifyReleve(releve: Releve): Promise<any> {
-    return this.httpClient.put(this.urlReleves + '(guid\'' + releve.id + '\'', releve).toPromise();
+    return this.httpClient.put(this.urlReleves + '(guid\'' + releve.id + '\')', releve).toPromise();
   }
 
   deleteReleve(idReleve: string): Promise<any> {
     return this.httpClient.delete(this.urlReleves + '(guid\'' + idReleve + '\')').toPromise();
+  }
+
+  getReleve(idReleve: string): Promise<Releve> {
+    return this.httpClient.get(this.urlReleves + '(guid\'' + idReleve + '\')').toPromise().then(
+      (o: any) => new Releve(o.id, o.temperature, o.humidite, o.ensoleillement, o.date, o.idVille)
+    );
   }
 }

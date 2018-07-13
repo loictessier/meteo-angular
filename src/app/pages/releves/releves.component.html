@@ -17,11 +17,10 @@
       <td>{{ r.humidite }}</td>
       <td>{{ r.ensoleillement }}</td>
       <td>
-        <img class="CRUD" [routerLink]="['/releveform', {idVille: idVille, nomVille: nomVille, action: 'modify'}]" [src]="pencilImgPath" alt="modifier">
+        <img class="CRUD" [routerLink]="['/releveform', {idVille: idVille, nomVille: nomVille, idReleve: r.id}]" [src]="pencilImgPath" alt="modifier">
         <img class="CRUD" (click)="deleteReleve(r.id)" [src]="crossImgPath" alt="supprimer">
       </td>
     </tr>
   </tbody>
-  <input class="btn btn-primary" type="button" [routerLink]="['/releveform', {idVille: idVille, nomVille: nomVille, action: 'create'}]" value="Ajouter">
+  <input class="btn btn-primary" type="button" [routerLink]="['/releveform', {idVille: idVille, nomVille: nomVille}]" value="Ajouter">
 </table>
-
