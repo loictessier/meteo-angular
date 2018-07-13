@@ -13,11 +13,15 @@ export class RelevesComponent implements OnInit {
   listeReleves: Releve[];
   nomVille: string;
   idVille: string;
+  crossImgPath: string;
+  pencilImgPath: string;
 
   constructor(private dataApiHttpService: DataApiHttpService,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.crossImgPath = 'assets/cross.png';
+    this.pencilImgPath = 'assets/pencil.png';
     this.activatedRoute.params.subscribe(
       (params) => {
         if (params.idVille) {
@@ -28,6 +32,16 @@ export class RelevesComponent implements OnInit {
           });
         }
       });
+  }
+
+  deleteReleve(id: string) {
+    this.dataApiHttpService.deleteReleve(id).then(() => {
+      this.dataApiHttpService.getListReleves(this.idVille).then((liste) => {
+        this.listeReleves = liste;
+      });
+    }).catch((message) => {
+      console.log(message);
+    });
   }
 
 }
