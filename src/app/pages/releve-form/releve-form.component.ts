@@ -13,6 +13,7 @@ export class ReleveFormComponent implements OnInit {
   idVille: string;
   nomVille: string;
   newReleve = new Releve(null, 20, 10, 2, new Date(), this.idVille);
+  modeCreate: boolean;
 
   constructor(private dataApiHttpService: DataApiHttpService,
               private activatedRoute: ActivatedRoute,
@@ -26,23 +27,38 @@ export class ReleveFormComponent implements OnInit {
         this.newReleve.idVille = this.idVille;
         this.nomVille = params.nomVille;
       }
+      if (params.idReleve) {
+        this.modeCreate = false;
+        this.dataApiHttpService.getReleve(params.idReleve).then((releve) => {
+          this.newReleve = releve;
+        });
+      } else {
+        this.modeCreate = true;
+      }
     });
 
   }
 
-  createReleve() {
+  saveReleve() {
     this.newReleve.date = new Date();
-    this.dataApiHttpService.createReleve(this.newReleve).then(() => {
-      this.router.navigateByUrl('/pageville;idVille=' + this.idVille + ';nomVille=' + this.nomVille);
-    }).catch((message) => {
-      console.log(message);
-    });
+    if (this.modeCreate) {
+      this.dataApiHttpService.createReleve(this.newReleve).then(() => {
+        this.router.navigateByUrl('/pageville;idVille=' + this.idVille + ';nomVille=' + this.nomVille);
+      }).catch((message) => {
+        console.log(message);
+      });
+    } else {
+      debugger;
+      this.dataApiHttpService.modifyReleve(this.newReleve).then(() => {
+        this.router.navigateByUrl('/pageville;idVille=' + this.idVille + ';nomVille=' + this.nomVille);
+      }).catch((message) => {
+        console.log(message);
+      });
+    }
   }
 
   backPage() {
-
     this.router.navigateByUrl('/');
-
   }
 
 }
