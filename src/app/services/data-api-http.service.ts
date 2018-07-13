@@ -30,6 +30,27 @@ export class DataApiHttpService {
     return this.listeVilleCache;
   }
 
+  getAllReleves() {
+    return this.httpClient.get(
+      this.urlReleves).toPromise().then(
+        (o: any) => o.value).then(
+          (t) => t.map(
+            (o) => {
+              let releve = new Releve(o.id, o.temperature, o.humidite, o.ensoleillement, o.date, o.idVille);
+              this.getVille(o.idVille).then(v => releve.ville = v);
+              return releve;
+            }
+
+          ));
+
+  }
+
+  getVille(idVille: string): Promise<Ville> {
+    return this.httpClient.get(this.urlVilles + '(guid\'' + idVille + '\')').toPromise().then(
+      (o: any) => new Ville(o.id, o.nom, o.latitude, o.longitude)
+    );
+  }
+
   getListReleves(idVille: string): Promise<Releve[]> {
     return this.httpClient.get(
       this.urlVilles + '(guid\'' + idVille + '\')/releves').toPromise().then(
@@ -55,4 +76,5 @@ export class DataApiHttpService {
       (o: any) => new Releve(o.id, o.temperature, o.humidite, o.ensoleillement, o.date, o.idVille)
     );
   }
+
 }

@@ -1,3 +1,5 @@
+import { Ville } from './ville';
+
 export class Releve {
 
     public id: string;
@@ -6,6 +8,7 @@ export class Releve {
     public ensoleillement: number;
     public date: Date;
     public idVille: string;
+    public ville: Ville;
 
     constructor(id: string, temperature: number, humidite: number, ensoleillement: number, date: Date, idVille: string) {
         if (id !== null) {
@@ -18,6 +21,7 @@ export class Releve {
         this.ensoleillement = ensoleillement;
         this.date = date;
         this.idVille = idVille;
+
     }
 
     private guid() {

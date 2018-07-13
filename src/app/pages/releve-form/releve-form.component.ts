@@ -12,7 +12,7 @@ export class ReleveFormComponent implements OnInit {
 
   idVille: string;
   nomVille: string;
-  newReleve = new Releve(null, 20, 10, 2, new Date(), this.idVille);
+  newReleve = new Releve(null, null, null, null, new Date(), this.idVille);
   modeCreate: boolean;
 
   constructor(private dataApiHttpService: DataApiHttpService,
@@ -48,7 +48,6 @@ export class ReleveFormComponent implements OnInit {
         console.log(message);
       });
     } else {
-      debugger;
       this.dataApiHttpService.modifyReleve(this.newReleve).then(() => {
         this.router.navigateByUrl('/pageville;idVille=' + this.idVille + ';nomVille=' + this.nomVille);
       }).catch((message) => {
