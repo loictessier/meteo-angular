@@ -47,6 +47,6 @@ export class DataApiHttpService {
   }
 
   deleteReleve(idReleve: string): Promise<any> {
-    return this.httpClient.delete(this.urlReleves + '(guid\'' + idReleve + '\'').toPromise();
+    return this.httpClient.delete(this.urlReleves + '(guid\'' + idReleve + '\')').toPromise();
   }
 }
