@@ -1,4 +1,6 @@
-<table class="table">
+<h2>Liste des villes</h2>
+
+<table class="table table-hover">
 
   <thead class="thead-dark">
     <tr>
@@ -10,7 +12,7 @@
 
   <tbody>
     <tr *ngFor="let v of listeVilles" [routerLink]="['/pageville', {idVille: v.id, nomVille: v.nom}]">
-      <td>{{ v.nom }}</td>
+      <td class="name-col">{{ v.nom }}</td>
       <td>{{ v.latitude }}</td>
       <td>{{ v.longitude }}</td>
     </tr>

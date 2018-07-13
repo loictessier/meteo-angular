@@ -1,4 +1,4 @@
-<h3>Ajout d'un relevé pour la ville de {{ nomVille }}</h3>
+<h2>Ajout d'un relevé pour la ville de <strong>{{ nomVille }}</strong></h2>
 
 <form  class="form-group" (submit)="createReleve()">
 
@@ -12,6 +12,6 @@
   <input class="form-control" [(ngModel)]="newReleve.ensoleillement" type="number" name="ensoleillement"><br/><br/>
 
   <input class="btn btn-primary" type="submit" value="Sauvegarder">
-  <button class="btn btn-primary div-back">Retour</button>
+  <button class="btn btn-primary div-back" (click)="backPage()">Retour</button>
 
 </form>
