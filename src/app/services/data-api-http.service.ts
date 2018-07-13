@@ -39,15 +39,14 @@ export class DataApiHttpService {
   }
 
   createReleve(releve: Releve): Promise<any> {
-    // let output: JSON;
-    // let obj: any = {
-    //   'date': releve.date.toString(),
-    //   'temperature': releve.temperature,
-    //   'humidite': releve.humidite,
-    //   'ensoleillement': releve.ensoleillement,
-    //   'idVille': releve.idVille
-    // };
-    // output = <JSON>obj;
     return this.httpClient.post(this.urlReleves, releve).toPromise();
+  }
+
+  modifyReleve(releve: Releve): Promise<any> {
+    return this.httpClient.put(this.urlReleves + '(guid\'' + releve.id + '\'', releve).toPromise();
+  }
+
+  deleteReleve(idReleve: string): Promise<any> {
+    return this.httpClient.delete(this.urlReleves + '(guid\'' + idReleve + '\'').toPromise();
   }
 }
