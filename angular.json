@@ -23,6 +23,8 @@
               "src/assets"
             ],
             "styles": [
+              "../meteo-angular/node_modules/bootstrap/dist/css/bootstrap.css",
+              "../meteo-angular/node_modules/font-awesome/css/font-awesome.min.css",
               "src/styles.css"
             ],
             "scripts": []
